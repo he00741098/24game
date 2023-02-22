@@ -1,59 +1,130 @@
 //use std::env;
 use std::collections::HashMap;
 use catch_input::input;
-mod db;
+use serde_json::{Result, Value};
+
+
 fn cry() -> f32{
 	println!("NOOOO");
 	0.0
 }
 
-fn query(string:&str){
-
-if &string[0..1]=="q"{
-let q = &string[7..];
-println!("Result: {}",db::query_key(q));
-}
-
-	
-}
 
 fn main(){
-let a = input!((String::from("Whadya wanna do? (no spaces between commas)\n1. Populate database (enter 1)\n2. query database (Syntax = query num,num,num,num)\n3. solve (Syntax = solve num,num,num,num)")));
+
+admin();
+}
+
+
+fn admin(){
+let a = input!((String::from("Whadya wanna do? \n1. Populate database (enter 1)\n2. query database (enter 2)\n3. solve (enter 3)\n")));
+	//println!();
+let map:HashMap<String, i32>;	
 	match a.as_str(){
 		"1" => {populate_database();},
-		_=>{query(a.as_str());}
+		"2" =>{map = get_from_file();
+		let gg = input!("enter numbers in format: 1,1,1,1\n");
+					 
+					search(&gg, map);
+					},
+		_=>{todo!()}
 
 
 		
 	}
+
+	
 }
 
-fn populate_database(){
-	let mut items = HashMap::new();
-// let a = input!("one => ").parse::<f32>().unwrap();
-// let b = input!("two => ").parse::<f32>().unwrap();
-// let c = input!("three => ").parse::<f32>().unwrap();
-// let d = input!("four => ").parse::<f32>().unwrap();
-// solve(a,b,c,d);
 
-for i in 1..=13{
+fn search(query:&str, map:HashMap<String, i32>){
+println!("{}",map.get(query).unwrap());
+	
+}
+
+
+#[tokio::main]
+async fn populate_database(){
+
+let mut items = HashMap::<String, i32>::new();
+let cpucount = num_cpus::get();
+println!("{} cpus", cpucount);
+let mut len = 13/cpucount;
+let extra = 13%cpucount;
+let mut vector = vec![];
+for num in 0..cpucount{
+if num==cpucount-1{
+	len +=extra;
+}
+	
+vector.push(
+tokio::spawn(async move {
+	async_populate_database((num*len+1).try_into().unwrap(),(len*(num+1)).try_into().unwrap())
+})
+	
+);
+}
+let mut end:Vec<HashMap<String, i32>>= vec![];
+for wq in vector{
+let map = wq.await.unwrap();
+end.push(map.await);
+}
+
+items = items.into_iter().chain(end.into_iter().flatten())
+.collect();
+	
+let result = serde_json::to_string(&items).unwrap();
+//println!("{}",result);
+to_file(&result);
+	
+}
+
+async fn async_populate_database(start: i32, end: i32) -> HashMap<String, i32>{
+
+let mut items = HashMap::new();
+
+for i in start..=end{
 for p in 1..=13{
 for t in 1..=13{
 for v in 1..=13{
 let mut nvec = [i,p,t,v];
 quicksort(&mut nvec);
-items.entry(nvec).or_insert(solve(nvec[0] as f32, nvec[1] as f32, nvec[2] as f32, nvec[3] as f32));
+let entry = "";
+let entry = entry.to_owned()+&nvec[0].to_string()+&","+&nvec[1].to_string()+&","+&nvec[2].to_string()+&","+&nvec[3].to_string();
+items.entry(entry).or_insert(solve(nvec[0] as f32, nvec[1] as f32, nvec[2] as f32, nvec[3] as f32));
 }
 }
 }
 }
 
-	for keys in items.keys(){
-		let key = keys[0].to_string()+","+&keys[1].to_string()+","+&keys[2].to_string()+","+&keys[3].to_string()+";";
-		db::save_to_db(&key, items.get(keys).unwrap_or(&0));
-		
-	};
+
+
+
+
+	items
 }
+
+
+fn to_file(string: &String){
+
+    std::fs::write(
+        "twentyFour.json",
+        &string,
+    )
+    .unwrap();
+	
+}
+
+fn get_from_file() -> HashMap<String, i32>{
+		let text = std::fs::read_to_string("twentyFour.json").unwrap();
+    
+	let rusty = serde_json::from_str::<HashMap<String, i32>>(&text).unwrap();
+
+	
+	rusty
+
+}
+
 
 
 fn solve(one:f32, two:f32, three:f32, four:f32) -> i32{
@@ -198,7 +269,7 @@ fn findNext(n:i32, x:&mut Vec<f32>) -> bool{
                         let temp = x[p as usize];
                         x[p as usize] = x[q as usize];
                         x[q as usize] = temp;
-												p+=1;
+												//p+=1;
 												q-=1;
                     }
                     return true;  // found it
