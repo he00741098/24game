@@ -1,7 +1,7 @@
 //use std::env;
 use std::collections::HashMap;
 use catch_input::input;
-use serde_json::{Result, Value};
+
 
 
 fn cry() -> f32{
@@ -48,7 +48,7 @@ async fn populate_database(){
 
 let mut items = HashMap::<String, i32>::new();
 let cpucount = num_cpus::get();
-println!("{} cpus", cpucount);
+println!("You have {} cpus", cpucount);
 let mut len = 13/cpucount;
 let extra = 13%cpucount;
 let mut vector = vec![];
@@ -173,7 +173,7 @@ fn solve(one:f32, two:f32, three:f32, four:f32) -> i32{
 						}
 			
 				}
-    if !findNext(4, &mut nums){
+    if !find_next(4, &mut nums){
 			//println!("48");
 			break;}
 		}
@@ -250,7 +250,7 @@ fn calc2(op:i32, op2:i32, op3:i32, arr:&Vec<f32>, var:i32) -> f32{
 
 
 
-fn findNext(n:i32, x:&mut Vec<f32>) -> bool{
+fn find_next(n:i32, x:&mut Vec<f32>) -> bool{
     let mut i:i32 = n;
     for w in 1..n {
 				i = i-1;
@@ -282,7 +282,7 @@ fn findNext(n:i32, x:&mut Vec<f32>) -> bool{
 }
 
 // Print out the array in one line
-fn printArray(n:i32, a:Vec<i32>) {
+fn print_array(n:i32, a:Vec<i32>) {
     for i in 0..n {
         println!("{}", a[i as usize]);
     }
@@ -296,7 +296,7 @@ fn compare_ints(a:i32, b:i32) ->i32 {
 }
 
 // Sort the array in ascending order
-fn sortArray(mut a:Vec<i32>) { quicksort(&mut a); }
+fn sort_array(mut a:Vec<i32>) { quicksort(&mut a); }
 
 
 fn partition(a: &mut [i32]) -> usize{
@@ -322,7 +322,7 @@ fn quicksort(a: &mut [i32]) {
     }
 }
 
-fn PrintStuff(op:i32, op2:i32, op3:i32, arr:&Vec<f32>, var:i32) {
+fn print_stuff(op:i32, op2:i32, op3:i32, arr:&Vec<f32>, var:i32) {
     let operators = ['+', '-', '*', '/'];
 		let op:usize = op as usize;
 		let op2 = op2 as usize;
