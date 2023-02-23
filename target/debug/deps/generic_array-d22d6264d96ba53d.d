@@ -1,0 +1,11 @@
+/workspaces/24game/target/debug/deps/generic_array-d22d6264d96ba53d.rmeta: /home/codespace/.cargo/registry/src/github.com-1ecc6299db9ec823/generic-array-0.14.6/src/lib.rs /home/codespace/.cargo/registry/src/github.com-1ecc6299db9ec823/generic-array-0.14.6/src/hex.rs /home/codespace/.cargo/registry/src/github.com-1ecc6299db9ec823/generic-array-0.14.6/src/impls.rs /home/codespace/.cargo/registry/src/github.com-1ecc6299db9ec823/generic-array-0.14.6/src/arr.rs /home/codespace/.cargo/registry/src/github.com-1ecc6299db9ec823/generic-array-0.14.6/src/functional.rs /home/codespace/.cargo/registry/src/github.com-1ecc6299db9ec823/generic-array-0.14.6/src/iter.rs /home/codespace/.cargo/registry/src/github.com-1ecc6299db9ec823/generic-array-0.14.6/src/sequence.rs
+
+/workspaces/24game/target/debug/deps/generic_array-d22d6264d96ba53d.d: /home/codespace/.cargo/registry/src/github.com-1ecc6299db9ec823/generic-array-0.14.6/src/lib.rs /home/codespace/.cargo/registry/src/github.com-1ecc6299db9ec823/generic-array-0.14.6/src/hex.rs /home/codespace/.cargo/registry/src/github.com-1ecc6299db9ec823/generic-array-0.14.6/src/impls.rs /home/codespace/.cargo/registry/src/github.com-1ecc6299db9ec823/generic-array-0.14.6/src/arr.rs /home/codespace/.cargo/registry/src/github.com-1ecc6299db9ec823/generic-array-0.14.6/src/functional.rs /home/codespace/.cargo/registry/src/github.com-1ecc6299db9ec823/generic-array-0.14.6/src/iter.rs /home/codespace/.cargo/registry/src/github.com-1ecc6299db9ec823/generic-array-0.14.6/src/sequence.rs
+
+/home/codespace/.cargo/registry/src/github.com-1ecc6299db9ec823/generic-array-0.14.6/src/lib.rs:
+/home/codespace/.cargo/registry/src/github.com-1ecc6299db9ec823/generic-array-0.14.6/src/hex.rs:
+/home/codespace/.cargo/registry/src/github.com-1ecc6299db9ec823/generic-array-0.14.6/src/impls.rs:
+/home/codespace/.cargo/registry/src/github.com-1ecc6299db9ec823/generic-array-0.14.6/src/arr.rs:
+/home/codespace/.cargo/registry/src/github.com-1ecc6299db9ec823/generic-array-0.14.6/src/functional.rs:
+/home/codespace/.cargo/registry/src/github.com-1ecc6299db9ec823/generic-array-0.14.6/src/iter.rs:
+/home/codespace/.cargo/registry/src/github.com-1ecc6299db9ec823/generic-array-0.14.6/src/sequence.rs:

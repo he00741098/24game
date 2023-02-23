@@ -1,0 +1,11 @@
+/workspaces/24game/target/debug/deps/futures_core-8cbaa1a707f81214.rmeta: /home/codespace/.cargo/registry/src/github.com-1ecc6299db9ec823/futures-core-0.3.26/src/lib.rs /home/codespace/.cargo/registry/src/github.com-1ecc6299db9ec823/futures-core-0.3.26/src/future.rs /home/codespace/.cargo/registry/src/github.com-1ecc6299db9ec823/futures-core-0.3.26/src/stream.rs /home/codespace/.cargo/registry/src/github.com-1ecc6299db9ec823/futures-core-0.3.26/src/task/mod.rs /home/codespace/.cargo/registry/src/github.com-1ecc6299db9ec823/futures-core-0.3.26/src/task/poll.rs /home/codespace/.cargo/registry/src/github.com-1ecc6299db9ec823/futures-core-0.3.26/src/task/__internal/mod.rs /home/codespace/.cargo/registry/src/github.com-1ecc6299db9ec823/futures-core-0.3.26/src/task/__internal/atomic_waker.rs
+
+/workspaces/24game/target/debug/deps/futures_core-8cbaa1a707f81214.d: /home/codespace/.cargo/registry/src/github.com-1ecc6299db9ec823/futures-core-0.3.26/src/lib.rs /home/codespace/.cargo/registry/src/github.com-1ecc6299db9ec823/futures-core-0.3.26/src/future.rs /home/codespace/.cargo/registry/src/github.com-1ecc6299db9ec823/futures-core-0.3.26/src/stream.rs /home/codespace/.cargo/registry/src/github.com-1ecc6299db9ec823/futures-core-0.3.26/src/task/mod.rs /home/codespace/.cargo/registry/src/github.com-1ecc6299db9ec823/futures-core-0.3.26/src/task/poll.rs /home/codespace/.cargo/registry/src/github.com-1ecc6299db9ec823/futures-core-0.3.26/src/task/__internal/mod.rs /home/codespace/.cargo/registry/src/github.com-1ecc6299db9ec823/futures-core-0.3.26/src/task/__internal/atomic_waker.rs
+
+/home/codespace/.cargo/registry/src/github.com-1ecc6299db9ec823/futures-core-0.3.26/src/lib.rs:
+/home/codespace/.cargo/registry/src/github.com-1ecc6299db9ec823/futures-core-0.3.26/src/future.rs:
+/home/codespace/.cargo/registry/src/github.com-1ecc6299db9ec823/futures-core-0.3.26/src/stream.rs:
+/home/codespace/.cargo/registry/src/github.com-1ecc6299db9ec823/futures-core-0.3.26/src/task/mod.rs:
+/home/codespace/.cargo/registry/src/github.com-1ecc6299db9ec823/futures-core-0.3.26/src/task/poll.rs:
+/home/codespace/.cargo/registry/src/github.com-1ecc6299db9ec823/futures-core-0.3.26/src/task/__internal/mod.rs:
+/home/codespace/.cargo/registry/src/github.com-1ecc6299db9ec823/futures-core-0.3.26/src/task/__internal/atomic_waker.rs:

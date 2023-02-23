@@ -2,7 +2,8 @@
 use std::collections::HashMap;
 use catch_input::input;
 
-
+mod server;
+mod game;
 
 fn cry() -> f32{
 	println!("NOOOO");
@@ -11,8 +12,11 @@ fn cry() -> f32{
 
 
 fn main(){
+use crate::server::server::start_server;
 
+start_server();
 admin();
+
 }
 
 
@@ -352,3 +356,8 @@ fn print_stuff(op:i32, op2:i32, op3:i32, arr:&Vec<f32>, var:i32) {
     }
     println!(" = 24\n");
 }
+
+
+
+
+
