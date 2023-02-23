@@ -1,6 +1,7 @@
 //use std::env;
 use std::collections::HashMap;
 use catch_input::input;
+use crate::server::server::start_server;
 
 mod server;
 mod game;
@@ -12,11 +13,39 @@ fn cry() -> f32{
 
 
 fn main(){
-use crate::server::server::start_server;
 
-start_server();
 admin();
 
+}
+
+
+#[test]
+fn test_database(){
+
+    let map = get_from_file();
+    println!("{}",map.len());
+    for i in 1..=13{
+        for q in 1..=13{
+            for g in 1..=13{
+                for l in 1..=13{
+                    let mut nvec = [i,q,g,l];
+                    quicksort(&mut nvec);
+                    let entry = "";
+                    let entry = entry.to_owned() + &nvec[0].to_string() + &"," + &nvec[1].to_string() + &"," + &nvec[2].to_string() + &"," + &nvec[3].to_string();
+                    quicksort(&mut nvec);
+                    match map.get(&entry){
+
+                        Some(_n) => {
+
+                        },
+                        None => {
+                            println!("{}", entry);
+                            panic!("AHHHH")},
+                    }
+                }
+            }
+        }
+    }
 }
 
 
@@ -31,6 +60,8 @@ let map:HashMap<String, i32>;
 					 
 					search(&gg, map);
 					},
+        "3" =>{},
+        "4" =>{start_server()},
 		_=>{todo!()}
 
 
@@ -63,7 +94,8 @@ if num==cpucount-1{
 	
 vector.push(
 tokio::spawn(async move {
-	async_populate_database((num*len+1).try_into().unwrap(),(len*(num+1)).try_into().unwrap())
+    println!("{}, {}, {}",num+1, len+num, len);
+	async_populate_database((num+1).try_into().unwrap(),(len+num).try_into().unwrap())
 })
 	
 );
@@ -88,14 +120,19 @@ async fn async_populate_database(start: i32, end: i32) -> HashMap<String, i32>{
 let mut items = HashMap::new();
 
 for i in start..=end{
+    println!("{}%", i);
 for p in 1..=13{
 for t in 1..=13{
 for v in 1..=13{
+
 let mut nvec = [i,p,t,v];
-quicksort(&mut nvec);
-let entry = "";
-let entry = entry.to_owned()+&nvec[0].to_string()+&","+&nvec[1].to_string()+&","+&nvec[2].to_string()+&","+&nvec[3].to_string();
-items.entry(entry).or_insert(solve(nvec[0] as f32, nvec[1] as f32, nvec[2] as f32, nvec[3] as f32));
+//quicksort(&mut nvec);
+
+    if nvec[0]<=nvec[1]&&nvec[1]<=nvec[2]&&nvec[2]<=nvec[3] {
+        let entry = "";
+        let entry = entry.to_owned() + &nvec[0].to_string() + &"," + &nvec[1].to_string() + &"," + &nvec[2].to_string() + &"," + &nvec[3].to_string();
+        items.entry(entry).or_insert(solve(nvec[0] as f32, nvec[1] as f32, nvec[2] as f32, nvec[3] as f32));
+    }
 }
 }
 }
@@ -188,7 +225,7 @@ fn solve(one:f32, two:f32, three:f32, four:f32) -> i32{
 
 fn calc(op:i32, num:f32, mut num2:f32) -> f32{
     // i = operation,num and num2 are the numbers to operate
-    let returnVal:f32 = match op {
+    let return_val:f32 = match op {
         0=>  // add
             num + num2,
             
@@ -207,44 +244,45 @@ fn calc(op:i32, num:f32, mut num2:f32) -> f32{
             // printf("%g %g\n", num, num2);
         _=>0.0,
     };
-    returnVal
+    return_val
 }
 
 fn calc2(op:i32, op2:i32, op3:i32, arr:&Vec<f32>, var:i32) -> f32{
-    let mut returnVal:f32;
-    let returnVal2:f32;
+    let mut return_val:f32;
+    let return_val2:f32;
     match var {
         0=>  // 123
-					{returnVal = calc(op, arr[0], arr[1]);
-            returnVal = calc(op2, returnVal, arr[2]);
-            returnVal = calc(op3, returnVal, arr[3])}
+					{
+                        return_val = calc(op, arr[0], arr[1]);
+            return_val = calc(op2, return_val, arr[2]);
+            return_val = calc(op3, return_val, arr[3])}
 						
           // 132
         4|1=>{  // 312
-            returnVal = calc(op, arr[0], arr[1]);
-            returnVal2 = calc(op3, arr[2], arr[3]);
-            returnVal = calc(op2, returnVal, returnVal2)}
+            return_val = calc(op, arr[0], arr[1]);
+            return_val2 = calc(op3, arr[2], arr[3]);
+            return_val = calc(op2, return_val, return_val2)}
             
         2=>{  // 213
-            returnVal2 = calc(op2, arr[1], arr[2]);
-            returnVal = calc(op, arr[0], returnVal2);
-            returnVal = calc(op3, returnVal, arr[3])}
+            return_val2 = calc(op2, arr[1], arr[2]);
+            return_val = calc(op, arr[0], return_val2);
+            return_val = calc(op3, return_val, arr[3])}
             
         3=>{  // 231
-            returnVal2 = calc(op2, arr[1], arr[2]);
-            returnVal = calc(op3, returnVal2, arr[3]);
-            returnVal = calc(op, arr[0], returnVal);
+            return_val2 = calc(op2, arr[1], arr[2]);
+            return_val = calc(op3, return_val2, arr[3]);
+            return_val = calc(op, arr[0], return_val);
             }
         5=>{  // 321
-            returnVal2 = calc(op3, arr[2], arr[3]);
-            returnVal = calc(op2, arr[1], returnVal2);
-            returnVal = calc(op, arr[0], returnVal);
+            return_val2 = calc(op3, arr[2], arr[3]);
+            return_val = calc(op2, arr[1], return_val2);
+            return_val = calc(op, arr[0], return_val);
 				}
 			_=>{
-				returnVal = -1.0;
+				return_val = -1.0;
 			}
     }
-    returnVal
+    return_val
 }
 
 
@@ -256,7 +294,7 @@ fn calc2(op:i32, op2:i32, op3:i32, arr:&Vec<f32>, var:i32) -> f32{
 
 fn find_next(n:i32, x:&mut Vec<f32>) -> bool{
     let mut i:i32 = n;
-    for w in 1..n {
+    for _w in 1..n {
 				i = i-1;
         if x[i as usize - 1] < x[i as usize] {  // x[i-1] is first drop, to be increased
             for j in i..n{
